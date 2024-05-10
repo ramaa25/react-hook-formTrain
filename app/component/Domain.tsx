@@ -67,7 +67,7 @@ export const Domain = () => {
   };
 
   return (
-    <div>
+    <div className="font-bold">
       <h1 className="text-center p-5 text-5xl">Domain Checking</h1>
       <div className="w-full flex flex-col gap-2 justify-center items-center ">
         <div

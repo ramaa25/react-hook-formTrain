@@ -5,6 +5,7 @@ import Navbar from "@/app/component/Navbar";
 import { useState } from "react";
 import { Domain } from "@/app/component/Domain";
 import Todo from "@/app/component/Todo";
+import Task from "./component/Task";
 
 export default function Home() {
   const client = new ApolloClient({
@@ -17,18 +18,19 @@ export default function Home() {
   return (
     <>
       <Navbar state={state} handleClick={setState} />
-
       <ApolloProvider client={client}>
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full overflow-hidden flex min-h-max">
           <div
-            className={`w-full duration-500 transition-all h-full p-5 ${
-              state !== "/" ? "-translate-x-full" : "translate-x-0"
-            }`}
+            className={`${
+              state === "/"
+                ? "w-full translate-x-0"
+                : "w-0 opacity-0 -translate-x-full"
+            } flex-shrink-0 duration-500 transition-all grow overflow-hidden `}
           >
             <Todo />
           </div>
           <div
-            className={`w-full duration-500 transition-all h-full absolute top-0 left-0 ${
+            className={`w-full flex-shrink-0  duration-500 transition-all ${
               state !== "domain" ? "translate-x-full" : "translate-x-0"
             }`}
           >

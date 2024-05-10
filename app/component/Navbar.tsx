@@ -6,7 +6,7 @@ const Navbar = ({
   state: string;
 }) => {
   return (
-    <div className="flex gap-5 w-full justify-around relative tracking-wider capitalize">
+    <div className="flex gap-5 w-full justify-around relative tracking-wider capitalize font-bold text-xl">
       <div
         onClick={() => handleClick("/")}
         className={` w-full text-center p-5 hover:cursor-pointer btn`}

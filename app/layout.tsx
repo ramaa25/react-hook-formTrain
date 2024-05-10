@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 
-const inter = Darker_Grotesque({ subsets: ["latin"], weight: "700" });
+const inter = Darker_Grotesque({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
