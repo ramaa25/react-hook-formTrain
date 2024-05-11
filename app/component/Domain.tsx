@@ -67,7 +67,7 @@ export const Domain = () => {
   };
 
   return (
-    <div className="font-bold">
+    <div className="font-bold ">
       <h1 className="text-center p-5 text-5xl">Domain Checking</h1>
       <div className="w-full flex flex-col gap-2 justify-center items-center ">
         <div
@@ -79,7 +79,7 @@ export const Domain = () => {
               {...rest}
               type="text"
               name="dom"
-              className=" px-2 p-1 border-2 border-black outline-none w-[25rem] h-12 text-xl"
+              className=" px-2 p-1 border-2 border-black outline-none w-full md:w-[25rem] h-12 text-xl"
               placeholder="search domain"
               ref={(e) => {
                 ref(e);

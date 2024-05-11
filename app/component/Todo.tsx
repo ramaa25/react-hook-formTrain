@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Task from "./Task";
 import {
@@ -7,32 +7,46 @@ import {
   AiOutlineEdit,
   AiOutlineFileDone,
 } from "react-icons/ai";
+import Sidebar from "./Sidebar";
 
 export default function Todo() {
-  const { register, setValue, getValues } = useForm({
+  const { register, setValue, getValues, watch } = useForm({
     defaultValues: {
       value: "",
+      cari: "",
     },
   });
   type todoList = {
     value: string;
     done: boolean;
   }[];
+
   const [data, addData] = useState<todoList>([]);
   const [index, setIndex] = useState<number | null>(null);
   const [btnClick, setClick] = useState(false);
+  const [search, setSearch] = useState<todoList | null>(null);
+
+  const dataResult = search ?? data;
 
   return (
-    <div className="w-full p-5">
-      <div className="w-full flex justify-center min-h-[90vh] gap-2">
-        <div className="w-[50rem] bg-[#60c0bf] border-2 border-black rounded-lg min-h-max p-5 px-10">
+    <div className="w-full p-5 flex relative flex-col-reverse md:flex-row gap-2">
+      <Sidebar />
+      <div className="w-full flex justify-center min-h-screen md:min-h-[90vh] gap-2">
+        <div className="w-[50rem] bg-[#60c0bf] border-2 border-black rounded-lg min-h-max p-5 px-10 mb-16 md:m-0">
           <h1 className="text-6xl font-bold">Things to do:</h1>
           <div className="w-full flex gap-5 mt-10 font-bold">
             <form className="flex rounded-xl overflow-hidden border-2 border-black w-full ">
               <input
                 type="text"
+                {...register("cari")}
                 className="h-full w-full outline-none py-2 px-5 bg-[#f7cb66] placeholder:font-bold text-2xl"
                 placeholder="Search a task..."
+                onChange={() => {
+                  const search = data.filter(
+                    (val) => val.value === watch("cari")
+                  );
+                  setSearch(() => [...search]);
+                }}
               />
               <button
                 type="submit"
@@ -56,7 +70,7 @@ export default function Todo() {
               scrollbarWidth: "thin",
             }}
           >
-            {data.map((val, key) => (
+            {dataResult.map((val, key) => (
               <div
                 key={key}
                 className="w-full min-h-16 bg-[#b380da] border-2 flex items-center border-black rounded-xl p-3 gap-1 group/item"
