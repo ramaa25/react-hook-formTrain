@@ -20,8 +20,8 @@ export default function Todo() {
   const [index, setIndex] = useState<number | null>(null);
   const [btnClick, setClick] = useState(false);
   const [filter, setFilter] = useState<todoList | null>(null);
-  const [search, setSearch] = useState<todoList | null>(null);
-  const resultData = filter ?? search ?? data;
+  // const [search, setSearch] = useState<todoList | null>(null);
+  const resultData = filter ?? data;
 
   return (
     <div className="w-full p-5 flex relative flex-col-reverse md:flex-row gap-2">
@@ -31,16 +31,7 @@ export default function Todo() {
           <h1 className="text-6xl font-bold">Things to do:</h1>
           <div className="w-full flex gap-5 mt-10 font-bold">
             <form className="flex rounded-xl overflow-hidden border-2 border-black w-full ">
-              <input
-                type="text"
-                {...register('cari')}
-                className="h-full w-full outline-none py-2 px-5 bg-[#f7cb66] placeholder:font-bold text-2xl"
-                placeholder="Search a task..."
-                onChange={() => {
-                  const search = data.filter((val) => val.value === watch('cari'));
-                  setSearch(() => [...search]);
-                }}
-              />
+              <input type="text" {...register('cari')} className="h-full w-full outline-none py-2 px-5 bg-[#f7cb66] placeholder:font-bold text-2xl" placeholder="Search a task..." />
               <button type="submit" className=" px-3 bg-black text-white text-5xl -mt-3 -scale-x-100">
                 &#8981;
               </button>
@@ -102,14 +93,3 @@ export default function Todo() {
     </div>
   );
 }
-
-// export const DataTodo = () => {
-//   // Fungsi untuk menambahkan data baru
-//   const addTodo = (newTodo: string) => {
-//     addData((prevData) => ({
-//       tasks: [...prevData.tasks, { value: newTodo }],
-//     }));
-//   };
-
-//   return { data, addTodo }; // Mengembalikan data dan fungsi addTodo
-// };

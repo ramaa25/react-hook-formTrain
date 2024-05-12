@@ -1,13 +1,7 @@
-import { useForm, useFieldArray, SubmitHandler } from "react-hook-form";
-import { AiTwotoneMinusCircle, AiTwotonePlusCircle } from "react-icons/ai";
+import { useForm, useFieldArray, SubmitHandler } from 'react-hook-form';
+import { AiTwotoneMinusCircle, AiTwotonePlusCircle } from 'react-icons/ai';
 
-export default function Task({
-  addTodo,
-  btnEvent,
-}: {
-  addTodo: Function;
-  btnEvent: boolean;
-}) {
+export default function Task({ addTodo, btnEvent }: { addTodo: Function; btnEvent: boolean }) {
   type todoList = {
     tasks: {
       value: string;
@@ -15,12 +9,12 @@ export default function Task({
   };
   const { register, handleSubmit, control, reset } = useForm<todoList>({
     defaultValues: {
-      tasks: [{ value: "" }],
+      tasks: [{ value: '' }],
     },
   });
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "tasks",
+    name: 'tasks',
     rules: {
       minLength: 1,
       maxLength: 10,
@@ -38,11 +32,7 @@ export default function Task({
   };
 
   return (
-    <div
-      className={`font-bold ${
-        btnEvent && "hidden"
-      } bg-[#60c0bf] border-2 border-black rounded-md px-10 p-5 w-full`}
-    >
+    <div className={`font-bold ${!btnEvent && 'hidden'} bg-[#60c0bf] border-2 border-black rounded-md px-10 p-5 w-full`}>
       <h1 className="text-3xl capitalize mb-3">tambah todo</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-1">
         {fields.map((field, index) => (
@@ -51,9 +41,9 @@ export default function Task({
               className="border-2 border-black rounded-lg outline-none bg-[#f7cb66] p-1 px-2 leading-5 resize-none h-20"
               {...register(`tasks.${index}.value`)}
               style={{
-                scrollbarColor: "white transparent",
-                scrollbarWidth: "thin",
-                scrollMargin: "5px",
+                scrollbarColor: 'white transparent',
+                scrollbarWidth: 'thin',
+                scrollMargin: '5px',
               }}
             />
             <button
@@ -68,18 +58,11 @@ export default function Task({
           </div>
         ))}
         <div className="flex gap-2">
-          <button
-            type="submit"
-            className="text-xl bg-[#f7cb66] text-black border-2 border-black rounded-lg px-3 p-1"
-          >
+          <button type="submit" className="text-xl bg-[#f7cb66] text-black border-2 border-black rounded-lg px-3 p-1">
             submit
           </button>
           {fields.length > 0 && (
-            <button
-              type="button"
-              onClick={() => fields.length < 9 && append({ value: "" })}
-              className="text-xl flex justify-center items-center px-2 p-1 gap-1  "
-            >
+            <button type="button" onClick={() => fields.length < 9 && append({ value: '' })} className="text-xl flex justify-center items-center px-2 p-1 gap-1  ">
               <AiTwotonePlusCircle /> Tambah
             </button>
           )}
