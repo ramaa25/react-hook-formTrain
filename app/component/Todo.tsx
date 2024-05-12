@@ -20,8 +20,23 @@ export default function Todo() {
   const [index, setIndex] = useState<number | null>(null);
   const [btnClick, setClick] = useState(false);
   const [filter, setFilter] = useState<todoList | null>(null);
-  // const [search, setSearch] = useState<todoList | null>(null);
-  const resultData = filter ?? data;
+  const [search, setSearch] = useState<todoList | null>(null);
+  const resultData = filter ?? search ?? data;
+
+  useEffect(() => {
+    const datas = filter ?? data;
+    const subscription = watch((value) => {
+      setSearch(
+        datas.filter((val) => {
+          val === value.cari;
+          console.log(value.cari);
+        })
+      );
+      console.log(value.cari);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [watch]);
 
   return (
     <div className="w-full p-5 flex relative flex-col-reverse md:flex-row gap-2">
@@ -93,3 +108,14 @@ export default function Todo() {
     </div>
   );
 }
+
+// export const DataTodo = () => {
+//   // Fungsi untuk menambahkan data baru
+//   const addTodo = (newTodo: string) => {
+//     addData((prevData) => ({
+//       tasks: [...prevData.tasks, { value: newTodo }],
+//     }));
+//   };
+
+//   return { data, addTodo }; // Mengembalikan data dan fungsi addTodo
+// };
