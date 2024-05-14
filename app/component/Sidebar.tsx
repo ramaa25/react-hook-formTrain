@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AiOutlineCheckCircle,
   AiOutlineFileDone,
@@ -51,6 +51,14 @@ export default function Sidebar({
     chekBtn.current?.classList.toggle("md:p-3.5");
   };
 
+  const [width, setwidth] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener("resize", (e: any) => {
+      setwidth(e.target.innerWidth);
+    });
+  });
+
   const [currentFilter, setFilters] = useState("");
 
   return (
@@ -89,7 +97,9 @@ export default function Sidebar({
           <AiOutlineFileDone className="flex-shrink-0" />
           <span
             className={`text-xl md:absolute  ${
-              (currentFilter === "" && "static md:absolute translate-x-0") ||
+              (width < 768 &&
+                currentFilter === "" &&
+                "static md:absolute translate-x-0") ||
               (currentFilter !== "" && "absolute translate-x-full ")
             } px-2 md:px-0 md:w-full flex justify-center items-center md:opacity-0 duration-300 `}
             ref={all}
