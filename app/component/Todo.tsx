@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Task from "./Task";
 import {
@@ -42,10 +42,10 @@ export default function Todo() {
       <div className="px-5 relative">
         <Sidebar setFilter={setFilter} data={data} setSearch={setSearch} />
       </div>
-      <div className="w-full flex justify-center min-h-[80vh] md:min-h-[90vh] gap-2 pb-5">
+      <div className="w-full flex justify-center min-h-[80vh] md:min-h-[90vh] gap-2 pb-5 md:p-0">
         <div className="xl:w-[50rem] md:w-[35rem] w-full bg-[#60c0bf] border-2 border-black rounded-lg min-h-max p-5 px-10 mb-16 md:m-0">
           <h1 className="text-6xl font-bold">Things to do:</h1>
-          <div className="w-full flex gap-5 mt-10 font-bold">
+          <div className="w-full flex gap-5 mt-10 font-bold flex-col md:flex-row">
             <form
               className="flex rounded-xl overflow-hidden border-2 border-black w-full "
               onSubmit={handleSubmit(onSubmit)}
@@ -64,7 +64,7 @@ export default function Todo() {
               </button>
             </form>
             <button
-              className="bg-[#7fbc95] border-2 border-black rounded-xl w-2/3 text-2xl active:translate-y-0.5 duration-150"
+              className="bg-[#7fbc95] border-2 border-black rounded-xl md:w-2/3 text-2xl active:translate-y-0.5 py-2 duration-150"
               onClick={() => setClick((click) => !click)}
             >
               New task
@@ -141,7 +141,12 @@ export default function Todo() {
             console.log(e.target);
           }}
         >
-          <Task addTodo={addData} btnEvent={btnClick} setBtn={setClick} />
+          <Task
+            addTodo={addData}
+            btnEvent={btnClick}
+            setBtn={setClick}
+            setSearch={setSearch}
+          />
         </div>
       </div>
     </div>
