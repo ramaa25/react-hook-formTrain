@@ -56,6 +56,9 @@ export default function Task({
   return (
     <div
       className={`font-bold bg-[#60c0bf] border-2 border-black rounded-md px-10 p-5 w-full md:w-1/2 lg:w-full m-auto relative`}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
     >
       <h1 className="text-3xl capitalize mb-3 text-center">tambah todo</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-1">

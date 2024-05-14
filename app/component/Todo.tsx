@@ -137,9 +137,7 @@ export default function Todo() {
           ${!btnClick ? "opacity-0 -z-10" : "opacity-100 z-0"}
           absolute top-0 left-0 duration-300 lg:z-0 lg:static lg:w-max w-full p-10 md:p-20 py-40 lg:p-0 bg-black/50 lg:bg-transparent h-screen`}
           ref={btnRef}
-          onClick={(e) => {
-            console.log(e.target);
-          }}
+          onClick={() => setClick(!btnClick)}
         >
           <Task
             addTodo={addData}
