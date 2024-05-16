@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Navbar state={state} handleClick={setState} />
       <ApolloProvider client={client}>
-        <div className="relative w-full overflow-hidden flex ">
+        <div className="relative w-full overflow-hidden flex">
           <div
             className={`${
               state === "/"

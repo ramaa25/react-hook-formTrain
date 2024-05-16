@@ -69,7 +69,7 @@ export default function Task({
                 className="border-2 border-black rounded-lg outline-none bg-[#f7cb66] p-1 px-2 leading-5 resize-none w-full h-20"
                 {...register(`tasks.${index}.value`, {
                   maxLength: {
-                    value: 500,
+                    value: 100,
                     message: "panjang karakter terlalu banyak",
                   },
                 })}
