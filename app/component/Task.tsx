@@ -55,7 +55,7 @@ export default function Task({
 
   return (
     <div
-      className={`font-bold bg-[#60c0bf] border-2 border-black rounded-md px-10 p-5 w-full md:w-1/2 lg:w-full m-auto relative`}
+      className={`font-bold bg-[#60c0bf] border-2 border-black rounded-md px-10 p-5 w-full md:w-1/2 lg:w-full h-fit relative`}
       onClick={(e) => {
         e.stopPropagation();
       }}
@@ -69,7 +69,7 @@ export default function Task({
                 className="border-2 border-black rounded-lg outline-none bg-[#f7cb66] p-1 px-2 leading-5 resize-none w-full h-20"
                 {...register(`tasks.${index}.value`, {
                   maxLength: {
-                    value: 100,
+                    value: 250,
                     message: "panjang karakter terlalu banyak",
                   },
                 })}

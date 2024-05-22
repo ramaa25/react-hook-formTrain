@@ -53,7 +53,7 @@ export default function Todo() {
               <input
                 type="text"
                 {...register("cari")}
-                className="h-full w-full outline-none py-2 px-5 bg-[#f7cb66] placeholder:font-bold text-2xl"
+                className="h-full w-full outline-none py-2 px-5 bg-[#f7cb66] placeholder:font-bold text-2xl placeholder:max-[320px]:text-lg"
                 placeholder="Search a task..."
               />
               <button
@@ -81,7 +81,7 @@ export default function Todo() {
             {resultData.map((val, key) => (
               <div
                 key={key}
-                className="w-full min-h-16 bg-[#b380da] border-2 flex items-center border-black rounded-xl p-3 gap-1 group/item flex-shrink-0"
+                className="w-full min-h-16 bg-[#b380da] border-2 flex  border-black rounded-xl p-3 gap-1 group/item flex-shrink-0"
               >
                 <p className="text-lg w-full font-extrabold leading-6 relative whitespace-pre max-h-[10rem] overflow-x-hidden overflow-y-auto text-ellipsis">
                   {index === key ? (
@@ -95,7 +95,7 @@ export default function Todo() {
                   )}
                 </p>
                 <div
-                  className=" flex gap-2 flex-col sm:flex-row"
+                  className=" flex gap-2 flex-col sm:flex-row items-center justify-center"
                   style={{
                     scrollbarColor: "white #60c0bf",
                   }}
@@ -136,7 +136,7 @@ export default function Todo() {
         <div
           className={`lg:${btnClick ? "block" : "hidden"} 
           ${!btnClick ? "opacity-0 -z-10" : "opacity-100 z-0"}
-          absolute top-0 left-0 duration-300 lg:z-0 lg:static lg:w-max w-full p-10 md:p-20 py-40 lg:p-0 bg-black/50 lg:bg-transparent h-full overflow-y-auto`}
+          absolute top-0 left-0 duration-300 lg:z-0 lg:static lg:w-max w-full p-10 md:p-20 py-40 lg:p-0 bg-black/50 lg:bg-transparent h-full overflow-y-auto flex`}
           ref={btnRef}
           onClick={() => setClick(!btnClick)}
         >
@@ -151,14 +151,3 @@ export default function Todo() {
     </div>
   );
 }
-
-// export const DataTodo = () => {
-//   // Fungsi untuk menambahkan data baru
-//   const addTodo = (newTodo: string) => {
-//     addData((prevData) => ({
-//       tasks: [...prevData.tasks, { value: newTodo }],
-//     }));
-//   };
-
-//   return { data, addTodo }; // Mengembalikan data dan fungsi addTodo
-// };
